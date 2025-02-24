@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zidio AI Task Optimizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+        .result { font-size: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Zidio AI-Powered Task Optimizer</h1>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required><br>
+        <input type="text" name="text" placeholder="Enter your mood (e.g., I feel stressed)" required><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if mood %}
+        <div class="result">
+            <h2>Mood Detected: {{ mood }}</h2>
+            <h3>Recommended Tasks:</h3>
+            <ul>
+                {% for task in tasks %}
+                    <li>{{ task }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h3>📊 Team Mood Analytics</h3>
+        <ul>
+            {% for mood, count in team_mood.items() %}
+                <li>{{ mood }}: {{ count }} employees</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
